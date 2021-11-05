@@ -4,6 +4,13 @@
 namespace AVM {
     class BankedMemory {
         public:
-            AVM::Memory banks[16];
+            AVM::Memory *banks;
+        public:
+            BankedMemory() {
+                banks = new AVM::Memory[16];
+            }
+            BankedMemory(int __bank_count) {
+                banks = new AVM::Memory[__bank_count];
+            }
     }; 
 }

@@ -8,5 +8,12 @@ namespace AVM {
             int  fetch(int bank, int addr);
         private:
             AVM::BankedMemory m;
+        public:
+        BankedDataBus() {
+            m = AVM::BankedMemory();
+        }
+        BankedDataBus(int __bank_count) {
+            m = AVM::BankedMemory(__bank_count);
+        }
     };
 }
