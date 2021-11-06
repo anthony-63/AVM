@@ -23,6 +23,29 @@ namespace AVM {
 
         private:
             int __movir();
+            int __movrr();
+            int __movrm();
+            int __movim();
+            int __movmr();
+
+            int __addir();
             int __addrr();
+            int __subir();
+            int __subrr();
+            int __mulir();
+            int __mulrr();
+
+            int __inc();
+            int __dec();
+
+            int __cmprr();
+            int __cmpir();
+
+            int __je ();
+            int __jne();
+            int __jg ();
+            int __jl ();
+            int __jge();
+            int __jle();
     };
 }

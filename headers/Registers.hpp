@@ -12,10 +12,11 @@
 #define gr 9
 #define hr 10
 #define zr 11
+#define jr 12
 namespace AVM {
     class Registers {
         public:
-            int regs[11]{};
+            int regs[12]{};
             void setRegister(int reg, int val) {
                 regs[reg] = val;
             }
