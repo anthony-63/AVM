@@ -27,3 +27,10 @@
 #define jl  0x23
 #define jge 0x24
 #define jle 0x25
+
+#define pushr 0x30
+#define pushi 0x31
+#define popd  0x32
+#define popr  0x33
+
+#define mbr 0xf0

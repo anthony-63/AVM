@@ -2,10 +2,11 @@
 
 #include "Registers.hpp"
 #include "BankedDataBus.hpp"
-
+#include <vector>
 namespace AVM {
     class Processor {
         private:
+            std::vector<int> stack;
             AVM::Registers regs;
             AVM::BankedDataBus m;
         public:
@@ -52,5 +53,12 @@ namespace AVM {
             int __jl ();
             int __jge();
             int __jle();
+
+            int __pushr();
+            int __pushi();
+            int __popd ();
+            int __popr ();
+
+            int __mbr();
     };
 }

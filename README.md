@@ -85,3 +85,21 @@ They branch to an address based on the flag register
 
 Base instructions:
 je, jne, jg, jl, jge, jle
+
+### Stack operation types
+What they do:
+They preform operations to the stack
+
+Base instructions;
+push, pop
+
+r: Preform that operation from or to a register
+
+i: Preform that operation from a immediate
+
+d: Delete value
+
+### Misc instructions
+
+mbr: Sets memory bank register to a immidiate value then resets the instruction pointer
+

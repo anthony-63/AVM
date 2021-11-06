@@ -151,6 +151,33 @@ namespace AVM {
         if((__gr(jr) & 0x00000F) == 0x000001) __sr(ip, addr);
         return 0x00;
     }
+    int Processor::__pushr() {
+        int rval = __gr(getFromIP());
+        stack.push_back(rval);
+        return 0x00;
+    }
+    int Processor::__pushi() {
+        int imm = getFromIP();
+        stack.push_back(imm);
+        return 0x00;
+    }
+    int Processor::__popd() {
+        stack.pop_back();
+        return 0x00;
+    }
+    int Processor::__popr() {
+        int reg = getFromIP();
+        int val = stack.back();
+        stack.pop_back();
+        __sr(reg, val);
+        return 0x00;
+    }
+    int Processor::__mbr() {
+        int val = getFromIP();
+        __sr(mb, val);
+        __sr(ip, 0x00);
+        return 0x00;
+    }
 
     int Processor::execute(int __instruction) {
         switch(__instruction) {
@@ -176,6 +203,11 @@ namespace AVM {
             case jl : return __jl ();
             case jge: return __jge();
             case jle: return __jle();
+            case pushr: return __pushr();
+            case pushi: return __pushi();
+            case popd : return __popd();
+            case popr : return __popr();
+            case mbr: return __mbr();
             default: return 0xe5;
         }
     }
@@ -214,7 +246,6 @@ namespace AVM {
     void Processor::dbg() {
         std::cout << "\n";
         std::cout << "ip: " << __gr(ip) << "\n";
-        std::cout << "sp: " << __gr(sp) << "\n";
         std::cout << "mb: " << __gr(mb) << "\n";
         std::cout << "ar: " << __gr(ar) << "\n";
         std::cout << "br: " << __gr(br) << "\n";

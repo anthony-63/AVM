@@ -3,10 +3,8 @@
 int main() {
     AVM::Processor cpu = AVM::Processor(16); // set up a cpu with a bank count of 16
     int prog[] = {
-        movir, 0x4, ar,
-        decr, ar,
-        cmpir, 0x00, ar,
-        jne, 0x3,
+        pushi, 0x100,
+        popr, ar,
         hlt,
     };
     int psize = std::end(prog) - std::begin(prog);

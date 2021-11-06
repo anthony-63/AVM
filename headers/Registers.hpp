@@ -1,7 +1,6 @@
 #pragma once
 
 #define ip 0
-#define sp 1
 #define mb 2
 #define ar 3
 #define br 4
