@@ -5,7 +5,7 @@ Anything VM. Pretty simple. I might make this a decently usefull vm with softwar
 
 32-bit architecture.
 
-Has swappable memory banks, each bank has a max ammount of 0xFFFF
+Has swappable memory banks, each bank has a max amount of 0xFFFF
 
 ar-hr are general purpose registers
 
