@@ -12,5 +12,8 @@ namespace AVM {
             BankedMemory(int __bank_count) {
                 banks = new AVM::Memory[__bank_count];
             }
+            void clean() {
+                delete banks;
+            }
     }; 
 }

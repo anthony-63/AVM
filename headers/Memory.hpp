@@ -5,6 +5,9 @@
 namespace AVM {
     class Memory {
         public:
-            int *mem = (int*)malloc(sizeof(int) * 0xFFFF);
+            int *mem = new int[0xFFFF];
+            ~Memory() {
+                delete mem;
+            }
     };
 }

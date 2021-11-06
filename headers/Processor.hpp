@@ -12,6 +12,11 @@ namespace AVM {
         Processor(int __bank_count) {
             m = AVM::BankedDataBus(__bank_count);
         }
+        ~Processor() {
+            delete &regs;
+            m.clean();
+            delete &m;
+        }
             void run(int __location, bool __dbg);
             void load(int *__prog, int __psize, int __bank, int __location);
             void dbg();

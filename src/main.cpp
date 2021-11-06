@@ -12,5 +12,7 @@ int main() {
     int psize = std::end(prog) - std::begin(prog);
     cpu.load(prog, psize, 0, 0x0000);
     cpu.run(0x0000, true);
+    delete &cpu;
     return 0;
+
 }

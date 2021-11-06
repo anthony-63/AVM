@@ -26,8 +26,5 @@ namespace AVM {
             int getRegister(int reg) {
                 return regs[reg];
             }
-            
-        
-
     };
 }
