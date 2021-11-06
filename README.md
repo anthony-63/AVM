@@ -67,6 +67,8 @@ Preforms an operation on a register
 Base instructions:
 inc, dec
 
+r: Preform the operation on a single register
+
 ### Comparing instruction types
 What they do:
 They set the flag register
