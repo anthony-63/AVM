@@ -16,7 +16,10 @@
 namespace AVM {
     class Registers {
         public:
-            int regs[12]{};
+            int regs[13]{};
+            void resetFlags() {
+                regs[jr] = 0;
+            }
             void setRegister(int reg, int val) {
                 regs[reg] = val;
             }

@@ -1,9 +1,10 @@
 #pragma once
 
 #include <vector>
+#include <cstdlib>
 namespace AVM {
     class Memory {
         public:
-            int *mem = new int[0xFFFF];
+            int *mem = (int*)malloc(sizeof(int) * 0xFFFF);
     };
 }

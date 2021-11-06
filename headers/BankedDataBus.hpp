@@ -13,7 +13,7 @@ namespace AVM {
             m = AVM::BankedMemory();
         }
         BankedDataBus(int __bank_count) {
-            m = AVM::BankedMemory(__bank_count);
+            m = AVM::BankedMemory();
         }
     };
 }

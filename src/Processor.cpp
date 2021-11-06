@@ -123,32 +123,32 @@ namespace AVM {
     }
     int Processor::__je (){
         int addr = getFromIP();
-        if((__gr(jr) & 0xF00000) >> 20) __sr(ip, addr);
+        if((__gr(jr) & 0xF00000) == 0x100000) __sr(ip, addr);
         return 0x00;
     }
     int Processor::__jne(){
         int addr = getFromIP();
-        if((__gr(jr) & 0x0F0000) >> 16) __sr(ip, addr);
+        if((__gr(jr) & 0x0F0000) == 0x010000) __sr(ip, addr);
         return 0x00;
     }
     int Processor::__jg (){
         int addr = getFromIP();
-        if((__gr(jr) & 0x00F000) >> 12) __sr(ip, addr);
+        if((__gr(jr) & 0x00F000) == 0x001000) __sr(ip, addr);
         return 0x00;
     }
     int Processor::__jl (){
         int addr = getFromIP();
-        if((__gr(jr) & 0x000F00) >>  8) __sr(ip, addr);
+        if((__gr(jr) & 0x000F00) == 0x000100) __sr(ip, addr);
         return 0x00;
     }
     int Processor::__jge(){
         int addr = getFromIP();
-        if((__gr(jr) & 0x0000F0) >>  4) __sr(ip, addr);
+        if((__gr(jr) & 0x0000F0) == 0x000010) __sr(ip, addr);
         return 0x00;
     }
     int Processor::__jle(){
         int addr = getFromIP();
-        if((__gr(jr) & 0x00000F))      __sr(ip, addr);
+        if((__gr(jr) & 0x00000F) == 0x000001) __sr(ip, addr);
         return 0x00;
     }
 
@@ -180,6 +180,7 @@ namespace AVM {
         }
     }
     void Processor::run(int __location, bool __dbg) {
+        regs.resetFlags();
         if(__dbg) dbg();
         __sr(ip, __location);
         while(true) {
