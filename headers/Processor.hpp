@@ -59,6 +59,6 @@ namespace AVM {
             int __popd ();
             int __popr ();
 
-            int __mbr();
+            int __mbir();
     };
 }

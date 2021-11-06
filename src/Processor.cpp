@@ -172,7 +172,7 @@ namespace AVM {
         __sr(reg, val);
         return 0x00;
     }
-    int Processor::__mbr() {
+    int Processor::__mbir() {
         int val = getFromIP();
         __sr(mb, val);
         __sr(ip, 0x00);
@@ -207,7 +207,7 @@ namespace AVM {
             case pushi: return __pushi();
             case popd : return __popd();
             case popr : return __popr();
-            case mbr: return __mbr();
+            case mbir: return __mbir();
             default: return 0xe5;
         }
     }

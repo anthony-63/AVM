@@ -101,5 +101,5 @@ d: Delete value
 
 ### Misc instructions
 
-mbr: Sets memory bank register to a immidiate value then resets the instruction pointer
+mbir: Sets memory bank register to a immidiate value then resets the instruction pointer
 

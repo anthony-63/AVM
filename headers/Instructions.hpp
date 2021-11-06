@@ -33,4 +33,4 @@
 #define popd  0x32
 #define popr  0x33
 
-#define mbr 0xf0
+#define mbir 0xf0
