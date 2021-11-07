@@ -5,6 +5,7 @@
 #include <iostream>
 #include <cstdarg>
 #include <string>
+#include <fstream>
 #define __gr(X) regs.getRegister(X)
 #define __sr(X, Y) regs.setRegister(X, Y)
 namespace AVM {
@@ -178,6 +179,9 @@ namespace AVM {
         __sr(ip, 0x00);
         return 0x00;
     }
+    int Processor::__nop() {
+        return 0x00;
+    }
 
     int Processor::execute(int __instruction) {
         switch(__instruction) {
@@ -208,6 +212,7 @@ namespace AVM {
             case popd : return __popd();
             case popr : return __popr();
             case mbir: return __mbir();
+            case nop: return __nop();
             default: return 0xe5;
         }
     }
@@ -226,6 +231,21 @@ namespace AVM {
             std::cout << std::hex << i + __location << " <- " << std::hex << __prog[i] << '\n';
         }
     }
+    void Processor::loadbin(const char* __fname, int __bank, int __location) {
+        std::ifstream ifile(__fname, std::ios::binary);
+        std::vector<int> p;
+        while(ifile.good()) {
+            int cinstr;
+            ifile.read(reinterpret_cast<char*>(&cinstr), sizeof(cinstr));
+            p.push_back(cinstr);
+        }
+        int parr[p.size()];
+        std::copy(p.begin(), p.end(), parr);
+        for(long long unsigned int i = 0; i < p.size() - 1; i++) {
+            m.send(__bank, parr[i], i + __location);
+            std::cout << std::hex << i + __location << " <- " << std::hex << parr[i] << '\n';
+        }
+    }
     void errormsg(int __code, const char* fmt, ...) {
         std::cout << std::hex << __code << ": ";
         va_list va;
@@ -239,7 +259,7 @@ namespace AVM {
         switch(__code) {
             case 0x60: exit(0);
             case 0x00: return;
-            case 0xe5: errormsg(__code, "Instruction %02X not found", __gr(ip));
+            case 0xe5: errormsg(__code, "Instruction %02X not found", m.fetch(__gr(mb), __gr(ip)));
             default: errormsg(__code, "Error code not found, exiting...");
         }
     }

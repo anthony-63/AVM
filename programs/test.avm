@@ -1,0 +1,3 @@
+movir $a, %ar;
+decr %ar;
+hlt;
